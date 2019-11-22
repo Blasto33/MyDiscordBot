@@ -1,0 +1,20 @@
+{
+  "name": "Task_Manager",
+  "version": "1.0.0",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js",
+    "dev": "nodemon bot.js"
+  },
+  "dependencies": {
+    "auth": "0.0.9",
+    "bufferutil": "^4.0.1",
+    "discord.io": "^2.5.3",
+    "discord.js": "^11.4.2",
+    "uws": "^100.0.1",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.0"
+  }
+}

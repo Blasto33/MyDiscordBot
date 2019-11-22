@@ -1,7 +1,10 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
-const { token } = require("./auth.json")
+const { token, server_name, server_port } = require("./auth.json")
 var stats = require("./stats.js")
+var server_status = require("./server.js")
+var video = require("./video.js")
+var help = require("./help.js")
 
 client.login(token)
 
@@ -10,17 +13,21 @@ client.on('ready', () => {
 })
 
 client.on('message', msg => {
-  var splitted_msg = msg.content.split(" ");
-  var word = "vidéo"
+  var word = "vidéo";
   var sentence = msg.content;
+  var cmd = msg.content;
 
-  console.log(`The word "${word}" ${sentence.includes(word)? 'is' : 'is not'} in the sentence`);
-  var hello = stats.print_hello();
-  //console.log(splitted_msg.length);
-  /*for (i = 0; i < splitted_msg.length; i++) {
-    msg.reply(splitted_msg[i]);
-  } */
-  /*if (msg.content === 'ping') {
-    msg.reply('Pong!')
-  } */
+  if (msg.author.bot) //Prevents the bot from looping by itself
+      return;
+  switch (cmd) {
+      case '!help':
+        help.display_help()
+        return;
+      case '!video':
+        video.display_infos_last_video()
+      case '!stats':
+        stats.display_server_stats()
+      case '!server':
+        server_status.display_minecraft_server_status(msg)
+  }
 })

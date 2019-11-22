@@ -1,5 +1,5 @@
 module.exports = {
-    print_hello: function() {
+    display_server_stats: function() {
         console.log("Hello!");
     }
 };
